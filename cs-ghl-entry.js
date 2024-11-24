@@ -16,7 +16,8 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 };
                 contactsHeader.appendChild(customButton);
             }
-            if (document.querySelector('#CreateUpdateOpportunity') && !document.querySelector('#button-create-patient-opportunity')){
+            const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
+            if (cuOpportunityBtn && !document.querySelector('#button-create-patient-opportunity')){
                 const customButton = document.createElement('button');
                 customButton.innerText = 'Create Patient';
                 customButton.id = 'button-create-patient-opportunity';
@@ -25,7 +26,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 customButton.onclick = function() {
                     alert('Custom button clicked!');
                 };
-                contactsHeader.appendChild(customButton);
+                cuOpportunityBtn.parentElement.insertBefore(customButton,cuOpportunityBtn );
             }
         }
     }
