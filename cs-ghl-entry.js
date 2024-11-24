@@ -22,7 +22,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 customButton.innerText = 'Create Patient';
                 customButton.id = 'button-create-patient-opportunity';
                 customButton.className = 'n-button n-button--primary-type n-button--medium-type h-11 min-w-[8rem]'
-                customButton.style = 'background-color: #42ba78; color: white;';
+                customButton.style = 'background-color: #42ba78 !important; color: white; margin-right:8px';
                 customButton.onclick = function() {
                     alert('Custom button clicked!');
                 };
