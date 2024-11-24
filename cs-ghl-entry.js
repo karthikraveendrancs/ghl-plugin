@@ -24,7 +24,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 customButton.className = 'n-button n-button--primary-type n-button--medium-type h-11 min-w-[8rem]'
                 customButton.style = 'background-color: #42ba78 !important; color: white; margin-right:8px';
                 customButton.onclick = function() {
-                    alert('Custom button clicked!');
+                    cuOpportunityBtn.click();
                 };
                 cuOpportunityBtn.parentElement.insertBefore(customButton,cuOpportunityBtn );
             }
