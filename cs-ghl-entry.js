@@ -1,4 +1,3 @@
-<script>
 const targetNode = document.body; // Observe changes to the entire body
 const config = { childList: true, subtree: true }; // Look for added/removed nodes
 
@@ -22,4 +21,3 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 // Start observing the body for changes
 observer.observe(targetNode, config);
-</script>
