@@ -19,7 +19,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 customButton.onclick = function() {
                     alert('Custom button clicked!');
                 };
-                contactsHeader.appendChild(customButton);
+                csIdentifier.closest('FORM').appendChild(customButton);
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
             if (cuOpportunityBtn && !document.querySelector('#button-create-patient-opportunity')){
