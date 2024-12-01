@@ -39,7 +39,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 const createPatient = function() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", baseUrl + 'api/v1.0/patients", true);
+    xhr.open("POST", baseUrl + 'api/v1.0/patients');
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
