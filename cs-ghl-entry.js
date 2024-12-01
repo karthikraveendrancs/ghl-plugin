@@ -1,5 +1,6 @@
 const targetNode = document.body; // Observe changes to the entire body
-const config = { childList: true, subtree: true }; // Look for added/removed nodes
+const config = { childList: true, subtree: true };
+const baseUrl = 'https://ghl-cs-api.vercel.app/';
 
 const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
@@ -7,10 +8,14 @@ const observer = new MutationObserver((mutationsList, observer) => {
             const contactsHeader = document.querySelector('.topmenu-nav'); // Adjust selector
             if (contactsHeader && document.querySelector('.topmenu-navtitle').textContent.trim() === 'Contacts' && document.querySelector('.hl_wrapper.hl_contact--details') != null 
                 && !document.querySelector('.custom-button')) {
+                const csIdentifier = document.querySelector('#contact.carestack_identifier');
+                if(!csIdentifier){
+                    return;
+                }
                 const customButton = document.createElement('button');
                 customButton.innerText = 'Create Patient';
-                customButton.className = 'custom-button';
-                customButton.style = 'margin-left: 10px; background-color: #42ba78; color: white; padding: 5px; border: none; cursor: pointer;';
+                customButton.className = 'custom-button n-button n-button--primary-type n-button--medium-type h-11 min-w-[8rem]';
+                customButton.style = 'background-color: #42ba78 !important; color: white; margin-right:8px';
                 customButton.onclick = function() {
                     alert('Custom button clicked!');
                 };
@@ -34,7 +39,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 const createPatient = function() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://celebration.uat.carestack.com/api/v1.0/patients", true);
+    xhr.open("POST", baseUrl + 'api/v1.0/patients", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
@@ -48,7 +53,7 @@ const createPatient = function() {
     };
     var data = JSON.stringify({
         "firstName": "Karthik",
-        "lastName": "Raveendran",
+        "lastName": " Raveendran",
         "dob": "1981-07-31T00:00:00",
         "gender": 1,
         "defaultLocationId": 1
