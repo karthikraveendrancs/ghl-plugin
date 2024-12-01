@@ -8,7 +8,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
             const contactsHeader = document.querySelector('.topmenu-nav'); // Adjust selector
             if (contactsHeader && document.querySelector('.topmenu-navtitle').textContent.trim() === 'Contacts' && document.querySelector('.hl_wrapper.hl_contact--details') != null 
                 && !document.querySelector('.custom-button')) {
-                const csIdentifier = document.querySelector('#contact.carestack_identifier');
+                const csIdentifier = document.querySelector('#contact\\.carestack_identifier');
                 if(!csIdentifier){
                     return;
                 }
