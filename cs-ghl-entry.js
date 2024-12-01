@@ -6,8 +6,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
             const contactsHeader = document.querySelector('.topmenu-nav'); // Adjust selector
-            if (contactsHeader && document.querySelector('.topmenu-navtitle').textContent.trim() === 'Contacts' && document.querySelector('.hl_wrapper.hl_contact--details') != null 
-                && !document.querySelector('.custom-button')) {
+            if (contactsHeader && document.querySelector('.topmenu-navtitle').textContent.trim() === 'Contacts' ) {
                 const csIdentifier = document.querySelector('#contact\\.carestack_identifier');
                 if(!csIdentifier){
                     return;
