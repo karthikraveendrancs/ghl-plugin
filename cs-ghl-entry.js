@@ -8,12 +8,12 @@ const observer = new MutationObserver((mutationsList, observer) => {
             const contactsHeader = document.querySelector('.topmenu-nav'); // Adjust selector
             if (contactsHeader && document.querySelector('.topmenu-navtitle').textContent.trim() === 'Contacts' ) {
                 const csIdentifier = document.querySelector('#contact\\.carestack_identifier');
-                if(!csIdentifier){
+                if(!csIdentifier || document.querySelector('#button-create-patient-contact')){
                     return;
                 }
                 const customButton = document.createElement('button');
                 customButton.innerText = 'Create Patient';
-                 customButton.id = 'button-create-patient-contact';
+                customButton.id = 'button-create-patient-contact';
                 customButton.className = 'custom-button n-button n-button--primary-type n-button--medium-type h-11 min-w-[8rem]';
                 customButton.style = 'background-color: #42ba78 !important; color: white; margin-right:8px';
                 customButton.onclick = function() {
