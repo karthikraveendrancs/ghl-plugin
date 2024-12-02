@@ -71,8 +71,8 @@ const createPatient = function() {
 
 const loadDefaultLocation = function() {
     let xhr = new XMLHttpRequest();
-    const location = location.href.match('/location\/([^\/]+)/')[1];
-    xhr.open("GET", baseUrl + `tenants/${location}/locations`, true);
+    const tenant = location.href.match('/location\/([^\/]+)/')[1];
+    xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
@@ -90,4 +90,3 @@ const loadDefaultLocation = function() {
 
 // Start observing the body for changes
 observer.observe(targetNode, config);
-loadDefaultLocation();
