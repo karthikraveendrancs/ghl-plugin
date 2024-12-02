@@ -44,7 +44,6 @@ const observer = new MutationObserver((mutationsList, observer) => {
                         clone.querySelector('span:nth-child(2)').innerText = currentValue['name'];
                         ul.appendChild(clone);
                      });
-                     ul.remove(1);
                   })();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
