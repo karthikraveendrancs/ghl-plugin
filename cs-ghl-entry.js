@@ -28,12 +28,12 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 csIdentifier.closest('FORM').appendChild(customButton);
                  (async () => {
                      const tenant = location.href.match('/location\/([^\/]+)/')[1];
-                     if (!locationMap.has(tenant)) {
+                     if (tenant in locationMap) {
                          await loadLocations();
                      }
                      const locationCombo = document.querySelector('[name="contact.default_location"]');
                      locationCombo.remove(1);
-                     array.forEach((currentValue, index, array) => {
+                     locationMap[tenant].forEach((currentValue, index, array) => {
                         const locOption = document.createElement('option');
                         locOption.value = currentValue['id'];
                         locOption.text = currentValue['name'];
