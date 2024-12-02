@@ -20,7 +20,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 customButton.onclick = function() {
                     const firstName = document.querySelector('[name="contact.first_name"]').value;
                     const lastName = document.querySelector('[name="contact.last_name"]').value;
-                    const lastName = document.querySelector('[name="contact.date_of_birth"]').value;
+                    const dob = document.querySelector('[name="contact.date_of_birth"]').value;
                     const gender = document.querySelector('[name="contact.gender"]').value;
                     const defaultLocationId = document.querySelector('[name="contact.default_location"]').value;
                     
