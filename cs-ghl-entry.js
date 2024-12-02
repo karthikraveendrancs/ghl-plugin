@@ -48,6 +48,7 @@ const createPatient = function() {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", baseUrl + 'tenants//patients', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.setRequestHeader('Authorization', getToken());
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
