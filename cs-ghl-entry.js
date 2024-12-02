@@ -1,6 +1,7 @@
 const targetNode = document.body; // Observe changes to the entire body
 const config = { childList: true, subtree: true };
 const baseUrl = 'https://ghl-cs-api.vercel.app/';
+loadDefaultLocation();
 
 const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
@@ -44,7 +45,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 const createPatient = function() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", baseUrl + 'api/v1.0/patients');
+    xhr.open("POST", baseUrl + 'tenants//patients', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
@@ -64,6 +65,23 @@ const createPatient = function() {
         "defaultLocationId": 1
     });
     xhr.send(data);
+}
+
+const loadDefaultLocation = function() {
+    let xhr = new XMLHttpRequest();
+    const location = location.href.match('/location\/([^\/]+)/')[1];
+    xhr.open("GET", baseUrl + `tenants/${location}/locations`, true);
+     xhr.onload = function () {
+        if (xhr.status === 200 || xhr.status === 201) {
+            console.log("Response received:", xhr.responseText);
+        } else {
+            console.error("Error:", xhr.status, xhr.statusText);
+        }
+    };
+    xhr.onerror = function () {
+        console.error("Request failed.");
+    };
+    xhr.send();
 }
 
 // Start observing the body for changes
