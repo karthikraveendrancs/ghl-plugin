@@ -27,7 +27,18 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 };
                 csIdentifier.closest('FORM').appendChild(customButton);
                  (async () => {
-                    await loadLocations();
+                     const tenant = location.href.match('/location\/([^\/]+)/')[1];
+                     if (!locationMap.has(tenant)) {
+                         await loadLocations();
+                     }
+                     const locationCombo = document.querySelector('[name="contact.default_location"]');
+                     locationCombo.remove(1);
+                     array.forEach((currentValue, index, array) {
+                        const locOption = document.createElement('option');
+                        locOption.value = currentValue['id'];
+                        locOption.text = currentValue['name'];
+                        locationCombo.add(locOption);
+                     });
                   })();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
@@ -71,17 +82,16 @@ const createPatient = function() {
     xhr.send(data);
 }
 
-const loadLocations = async function() {
+const loadLocations = async function(tenant) {
     let xhr = new XMLHttpRequest();
     const token = await getToken()
-    const tenant = location.href.match('/location\/([^\/]+)/')[1];
     xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
     xhr.setRequestHeader('Authorization', token);
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
             const jsonResponse = JSON.parse(xhr.responseText);
-            locationMap[location] = jsonResponse;
+            locationMap[tenant] = jsonResponse;
         } else {
             console.error("Error:", xhr.status, xhr.statusText);
         }
