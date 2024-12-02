@@ -92,14 +92,13 @@ const loadLocations = function(tenant) {
             if (xhr.status === 200 || xhr.status === 201) {
                 const jsonResponse = JSON.parse(xhr.responseText);
                 locationMap[tenant] = jsonResponse.data;
+                resolve(jsonResponse);
             } else {
-                console.error("Error:", xhr.status, xhr.statusText);
+                reject(new Error(`HTTP Error: ${xhr.status} - ${xhr.statusText}`));
             }
-            resolve();
         };
         xhr.onerror = function () {
-            console.error("Request failed.");
-            reject();
+            reject(new Error('Request failed'));
         };
         xhr.send();
     });
