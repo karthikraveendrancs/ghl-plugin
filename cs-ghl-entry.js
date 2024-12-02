@@ -73,7 +73,7 @@ const loadDefaultLocation = function() {
     let xhr = new XMLHttpRequest();
     const tenant = location.href.match('/location\/([^\/]+)/')[1];
     xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
-    xhr.setRequestHeader('Authorization', getToken());
+    xhr.setRequestHeader('Authorization', await getToken());
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
