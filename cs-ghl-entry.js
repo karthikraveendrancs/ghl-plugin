@@ -33,7 +33,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                      }
                      const locationCombo = document.querySelector('[name="contact.default_location"]');
                      locationCombo.remove(1);
-                     array.forEach((currentValue, index, array) {
+                     array.forEach((currentValue, index, array) => {
                         const locOption = document.createElement('option');
                         locOption.value = currentValue['id'];
                         locOption.text = currentValue['name'];
