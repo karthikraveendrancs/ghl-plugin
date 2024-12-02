@@ -28,7 +28,6 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 csIdentifier.closest('FORM').appendChild(customButton);
                  (async () => {
                     await loadLocations();
-                    console.log('Async operation result:', data);
                   })();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
