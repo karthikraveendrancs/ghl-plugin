@@ -29,7 +29,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                  (async () => {
                      const tenant = location.href.match('/location\/([^\/]+)/')[1];
                      if (!(tenant in locationMap)) {
-                         await loadLocations();
+                         await loadLocations(tenant);
                      }
                      const locationCombo = document.querySelector('[name="contact.default_location"]');
                      locationCombo.remove(1);
