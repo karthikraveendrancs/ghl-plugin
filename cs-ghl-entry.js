@@ -82,24 +82,27 @@ const createPatient = function() {
     xhr.send(data);
 }
 
-const loadLocations = async function(tenant) {
-    let xhr = new XMLHttpRequest();
-    const token = await getToken()
-    xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
-    xhr.setRequestHeader('Authorization', token);
-    xhr.onload = function () {
-        if (xhr.status === 200 || xhr.status === 201) {
-            console.log("Response received:", xhr.responseText);
-            const jsonResponse = JSON.parse(xhr.responseText);
-            locationMap[tenant] = jsonResponse;
-        } else {
-            console.error("Error:", xhr.status, xhr.statusText);
-        }
-    };
-    xhr.onerror = function () {
-        console.error("Request failed.");
-    };
-    xhr.send();
+const loadLocations = function(tenant) {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        const token = await getToken()
+        xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
+        xhr.setRequestHeader('Authorization', token);
+        xhr.onload = function () {
+            if (xhr.status === 200 || xhr.status === 201) {
+                const jsonResponse = JSON.parse(xhr.responseText);
+                locationMap[tenant] = jsonResponse.data;
+            } else {
+                console.error("Error:", xhr.status, xhr.statusText);
+            }
+            resolve();
+        };
+        xhr.onerror = function () {
+            console.error("Request failed.");
+            reject();
+        };
+        xhr.send();
+    });
 }
 
 // Start observing the body for changes
