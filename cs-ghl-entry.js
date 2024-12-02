@@ -83,9 +83,9 @@ const createPatient = function() {
 }
 
 const loadLocations = async function(tenant) {
+    const token = await getToken();
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
-        const token = await getToken();
         xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
         xhr.setRequestHeader('Authorization', token);
         xhr.onload = function () {
