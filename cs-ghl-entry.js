@@ -1,7 +1,6 @@
 const targetNode = document.body; // Observe changes to the entire body
 const config = { childList: true, subtree: true };
 const baseUrl = 'https://ghl-cs-api.vercel.app/';
-loadDefaultLocation();
 
 const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
@@ -86,3 +85,4 @@ const loadDefaultLocation = function() {
 
 // Start observing the body for changes
 observer.observe(targetNode, config);
+loadDefaultLocation();
