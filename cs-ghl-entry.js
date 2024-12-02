@@ -44,6 +44,10 @@ const observer = new MutationObserver((mutationsList, observer) => {
                         clone.querySelector('span:nth-child(2)').innerText = currentValue['name'];
                         ul.appendChild(clone);
                      });
+                     const secondLi = ul.querySelector('li:nth-child(2)');
+                      if (secondLi) {
+                        ul.removeChild(secondLi);
+                      }
                   })();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
