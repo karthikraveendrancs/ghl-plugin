@@ -71,9 +71,10 @@ const createPatient = function() {
 
 const loadDefaultLocation = function() {
     let xhr = new XMLHttpRequest();
+    const token = await getToken()
     const tenant = location.href.match('/location\/([^\/]+)/')[1];
     xhr.open("GET", baseUrl + `tenants/${tenant}/locations`, true);
-    xhr.setRequestHeader('Authorization', await getToken());
+    xhr.setRequestHeader('Authorization', token);
     xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
