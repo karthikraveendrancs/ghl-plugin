@@ -12,12 +12,17 @@ const observer = new MutationObserver((mutationsList, observer) => {
                     return;
                 }
                 const customButton = document.createElement('button');
-                customButton.innerText = 'Create Patient';
+                customButton.innerText = 'Convert To Patient';
                 customButton.id = 'button-create-patient-contact';
                 customButton.className = 'custom-button n-button n-button--primary-type n-button--medium-type h-11 min-w-[8rem]';
                 customButton.style = 'background-color: #42ba78 !important; color: white; margin-right:8px';
                 customButton.onclick = function() {
-                    alert('Custom button clicked!');
+                    const firstName = document.querySelector('[name="contact.first_name"]').value;
+                    const lastName = document.querySelector('[name="contact.last_name"]').value;
+                    const lastName = document.querySelector('[name="contact.date_of_birth"]').value;
+                    const gender = document.querySelector('[name="contact.gender"]').value;
+                    const defaultLocationId = document.querySelector('[name="contact.default_location"]').value;
+                    
                 };
                 csIdentifier.closest('FORM').appendChild(customButton);
             }
