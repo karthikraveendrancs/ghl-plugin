@@ -1,6 +1,7 @@
 const targetNode = document.body; // Observe changes to the entire body
 const config = { childList: true, subtree: true };
 const baseUrl = 'https://ghl-cs-api.vercel.app/';
+const locationMap = {};
 
 const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
@@ -70,9 +71,11 @@ const loadDefaultLocation = function() {
     let xhr = new XMLHttpRequest();
     const location = location.href.match('/location\/([^\/]+)/')[1];
     xhr.open("GET", baseUrl + `tenants/${location}/locations`, true);
-     xhr.onload = function () {
+    xhr.onload = function () {
         if (xhr.status === 200 || xhr.status === 201) {
             console.log("Response received:", xhr.responseText);
+            const jsonResponse = JSON.parse(xhr.responseText);
+            locationMap[location] = jsonResponse;
         } else {
             console.error("Error:", xhr.status, xhr.statusText);
         }
