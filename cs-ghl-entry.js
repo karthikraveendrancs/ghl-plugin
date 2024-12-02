@@ -26,7 +26,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                     
                 };
                 csIdentifier.closest('FORM').appendChild(customButton);
-                loadDefaultLocation();
+                loadLocations();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
             if (cuOpportunityBtn && !document.querySelector('#button-create-patient-opportunity')){
@@ -69,7 +69,7 @@ const createPatient = function() {
     xhr.send(data);
 }
 
-const loadDefaultLocation = function() {
+const loadLocations = async function() {
     let xhr = new XMLHttpRequest();
     const token = await getToken()
     const tenant = location.href.match('/location\/([^\/]+)/')[1];
