@@ -28,7 +28,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 csIdentifier.closest('FORM').appendChild(customButton);
                  (async () => {
                      const tenant = location.href.match('/location\/([^\/]+)/')[1];
-                     if (tenant in locationMap) {
+                     if (!(tenant in locationMap)) {
                          await loadLocations();
                      }
                      const locationCombo = document.querySelector('[name="contact.default_location"]');
