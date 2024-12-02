@@ -26,6 +26,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                     
                 };
                 csIdentifier.closest('FORM').appendChild(customButton);
+                loadDefaultLocation();
             }
             const cuOpportunityBtn = document.querySelector('#CreateUpdateOpportunity');
             if (cuOpportunityBtn && !document.querySelector('#button-create-patient-opportunity')){
