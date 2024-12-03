@@ -34,12 +34,12 @@ const observer = new MutationObserver((mutationsList, observer) => {
                      const locationCombo = document.querySelector('[name="contact.default_location"]');
                      const node = document.querySelector('.contact\\.default_location ul li:nth-child(2)');
                      const ul = document.querySelector('.contact\\.default_location ul');
-                     locationCombo.remove(1);
+                     //locationCombo.remove(1);
                      locationMap[tenant].forEach((currentValue, index, array) => {
                         const locOption = document.createElement('option');
                         locOption.value = currentValue['id'];
                         locOption.text = currentValue['name'];
-                        locationCombo.add(locOption);
+                        //locationCombo.add(locOption);
                         const clone = node.cloneNode(true);
                         clone.querySelector('span:nth-child(2)').innerText = currentValue['name'];
                         //ul.appendChild(clone);
