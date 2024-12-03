@@ -42,11 +42,11 @@ const observer = new MutationObserver((mutationsList, observer) => {
                         locationCombo.add(locOption);
                         const clone = node.cloneNode(true);
                         clone.querySelector('span:nth-child(2)').innerText = currentValue['name'];
-                        ul.appendChild(clone);
+                        //ul.appendChild(clone);
                      });
                      const secondLi = ul.querySelector('li:nth-child(2)');
                       if (secondLi) {
-                        ul.removeChild(secondLi);
+                        //ul.removeChild(secondLi);
                       }
                   })();
             }
